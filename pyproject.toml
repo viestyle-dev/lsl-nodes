@@ -1,0 +1,38 @@
+[project]
+name = "lsl-nodes"
+version = "0.1.4"
+description = "A nonoha-engine plugin for Lab Streaming Layer (LSL) communication, enabling bidirectional data streaming between nonoha-engine and LSL-compatible applications (EEG devices, BCI systems, physiological sensors, etc.)."
+readme = "README.md"
+authors = [{name = "VIE, Inc."}]
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+keywords = ["nonoha", "dataflow", "node-graph", "lsl", "lab-streaming-layer", "eeg", "bci"]
+requires-python = ">=3.11"
+dependencies = ["pylsl", "numpy>=2.0"]
+
+[project.urls]
+Homepage   = "https://github.com/viestyle-dev/lsl-nodes"
+Repository = "https://github.com/viestyle-dev/lsl-nodes"
+Issues     = "https://github.com/viestyle-dev/lsl-nodes/issues"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "nonoha-core @ git+https://github.com/viestyle-dev/nonoha-core.git",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["lsl_nodes"]
+
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[tool.nonoha-hub]
+engine-compatibility = [">=0.9.0", "<0.11.0"]
